@@ -4,10 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// AQUI IMPORT UIKIT PARA ESTILOS 
+import UIkit from "uikit";
+import Icons from "uikit/dist/js/uikit-icons";
+import "uikit/dist/css/uikit.min.css";
+import { BrowserRouter } from 'react-router-dom';
+
+// IMPORTMOS LA CONFIGURACION DE LAS RUTAS
+
+
+// USAMOS UIKIT PARA LOS ICONS 
+UIkit.use(Icons)
+
+//JSX
+const WithRouter = ()=>(
+  <BrowserRouter>
+  <App/>
+  </BrowserRouter>
+)
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+ 
+    <WithRouter />,
   document.getElementById('root')
 );
 
