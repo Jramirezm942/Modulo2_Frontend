@@ -3,31 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-// AQUI IMPORT UIKIT PARA ESTILOS 
-import UIkit from "uikit";
+import { BrowserRouter } from "react-router-dom";
+import UIkit from 'uikit';
 import Icons from "uikit/dist/js/uikit-icons";
-import "uikit/dist/css/uikit.min.css";
-import { BrowserRouter } from 'react-router-dom';
-
-// IMPORTMOS LA CONFIGURACION DE LAS RUTAS
-
-
-// USAMOS UIKIT PARA LOS ICONS 
+import "uikit/dist/css/uikit.min.css"
+// usamos UIkit
 UIkit.use(Icons)
 
-//JSX
-const WithRouter = ()=>(
-  <BrowserRouter>
-  <App/>
-  </BrowserRouter>
-)
 
-ReactDOM.render(
- 
-    <WithRouter />,
-  document.getElementById('root')
+const WithRouter = () => (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
+
+ReactDOM.render(<WithRouter />, 
+document.getElementById("root"));
+
+
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

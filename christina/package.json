@@ -1,5 +1,5 @@
 {
-  "name": "manager_front",
+  "name": "christina",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,7 +10,7 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "uikit": "^3.6.3",
+    "uikit": "^3.6.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
