@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { todasmaquinas } from '../../services/admin';
-import {registro, infoColaborador} from "../../services/colabingWs";
+import {registro, infoColaborador, actualizarColaborador} from "../../services/colabingWs";
 import AppContext from '../../AppContext';
  
 
@@ -9,8 +9,8 @@ export default class colabRegistro extends Component {
 static contextType = AppContext;
     state = {
          colaborador: {},
-         listMaq:[]
-
+         listMaq:[],
+         isEditable:false
   }   
   componentWillMount(){
         const {history} = this.props
@@ -31,6 +31,7 @@ static contextType = AppContext;
             const {id} = this.props.match.params;
             //si viene un id en los paramas realizamos un peticion al backend
             if(id){
+            this.setState({isEditable:true})
             infoColaborador(id).then(res =>{
                 const {result} = res.data
                 this.setState({colaborador: result})
@@ -46,11 +47,13 @@ static contextType = AppContext;
               onSubmit = (event) => {
                 event.preventDefault()
                 console.log("voy  enviar datos")
-                registro(this.state.colaborador).then((response)=>{
+                const {colaborador} = this.state
+                const {id} = this.props.match.params;
+                const action = id ? actualizarColaborador : registro //<---- son ws(webservices) chequen si se importaron
+                const params = id ? {colaborador, id} : { colaborador } // creamos los parametros depeiendo de la accion 
+                action(params).then((response)=>{
                       this.setState({colaborador:{}})
                       console.log("felicidades",response)
-                      //localStorage.setItem( "Login",JSON.stringify(response.data.colaborador ) )
-                      //this.context.setUser(response.data.colaborador)
                       this.props.history.push("/listacolaboradores")
 
 
@@ -65,7 +68,8 @@ static contextType = AppContext;
          // aqui podemos declarar const var & let 
          console.log("la data",this.state.colaborador);
          const {handleChange, onSubmit} = this;
-         const {colaborador, listMaq} = this.state;
+         const {colaborador, listMaq, isEditable} = this.state;
+         console.log(isEditable)
         return (
             <div>
    
@@ -118,7 +122,7 @@ static contextType = AppContext;
                                     </div>
                                             </div>
 {/*////////////////////////////// tercer input /////////////////////////////////////////*/}
-
+{!isEditable &&
                                             <div className="uk-margin">
                                             <div className="uk-inline">  
                                                 <span className="uk-form-icon" uk-icon="icon: mail" ></span>
@@ -134,9 +138,9 @@ static contextType = AppContext;
                                     </div>
                                             </div>
 
-
+    }
  {/*////////////////////////////// cuarto input /////////////////////////////////////////*/}
- 
+ {!isEditable &&
                                     <div className="uk-margin">
                                             <div className="uk-inline">
                                                     <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
@@ -152,9 +156,9 @@ static contextType = AppContext;
 
                                     </div>
                                             </div>
-
+  }
  {/*////////////////////////////// quinto  input /////////////////////////////////////////*/}
- 
+ {!isEditable &&
                                             <div className="uk-margin">
                                             <div className="uk-inline">
                                                     <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
@@ -171,7 +175,7 @@ static contextType = AppContext;
 
                                     </div>
                                             </div>  
-    
+    } 
  {/*////////////////////////////// sexto  input /////////////////////////////////////////*/}
                                 <div className="uk-margin">
                                             <div className="uk-inline">
