@@ -19,7 +19,7 @@ const Form = ({ handleSubmit, handleChange, maquina,listCol}) => {
 
             value={maquina.modelo}
 
-            placeholder='modelo'
+            placeholder='Modelo'
 
             handleChange={handleChange}
 
@@ -31,31 +31,33 @@ const Form = ({ handleSubmit, handleChange, maquina,listCol}) => {
 
             value={maquina.capacidad}
 
-            placeholder='capacidad por hora'
+            placeholder='Capacidad por Hora'
 
             handleChange={handleChange}
 
           />
-
-          <InputField
-
-            name='estado'
-
-            value={maquina.estado}
-
-            placeholder='estado de la máquina'
-
-            handleChange={handleChange}
-
-          />
-
-         <select className="uk-select">
-                <option>Selecciona al Colaborador</option>
-                {listCol.map((item,i)=> <option key={item._id}>{item.nombre}</option>)}
+        <div className="uk-margin">
+         <label className="uk-form-label uk-text-capitalize">
+           Estado</label>
+           <div className="uk-form-controls">
+            <select name='estado'value={maquina['estado'] ? maquina['estado']:'Activa'} onChange={handleChange} className="uk-select"> 
+                <option value="Activa">Activa</option>
+                <option value="No disponible">No disponible</option>
+                <option value="Apagada">Apagada</option>
             </select>
-
+            </div>
+            </div>
+            <div className="uk-margin">
+            <label className="uk-form-label uk-text-capitalize">
+             Colaborador</label>
+            <select name='_colaborador'value={maquina['_colaborador'] ? maquina['_colaborador']:''} onChange={handleChange} className="uk-select">
+                <option value={0}>Selecciona al Colaborador</option>
+                {listCol.map((item,i)=> <option value={item._id} key={item._id}>{item.nombre}</option>)}
+            </select>
+          </div>
+         
         <button type="submit" className="uk-button uk-button-primary">
-            Ingresar Maquina
+            Guardar
           </button>
         </form>
       </div>
