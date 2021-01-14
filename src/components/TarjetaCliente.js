@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-const TarjetadeMaquina = ({
+const TarjetaCliente = ({
   _id,
-  modelo,
-  capacidad,
-  estado,
-  _colaborador
+  nombre,
+  año_de_ingreso,
+  _pedido,
+  isDemo = false,
 }) => {
   return (
     <div className="uk-margin-small-bottom">
@@ -15,16 +15,14 @@ const TarjetadeMaquina = ({
         <div className="uk-card-body uk-padding-small">
           <h3 className="uk-card-title uk-text-center">
             <Link
-              to={`/maquina/${_id}`}
+              to={`/cliente/${_id}`}
               className="uk-button uk-button-text uk-text-lead">
-              {modelo}
+              {nombre}
             </Link>
           </h3>
-          <div>Modelo: {modelo}</div>
-          <div>Capacidad {capacidad} por hora</div>
-          <div>Estado: {estado} </div>
-          <div>Colaborador: {_colaborador} </div>
-          <p className="uk-text-break">{estado}</p>
+          <div>Nombre: {nombre}</div>
+          <div>Año de Ingreso: {año_de_ingreso} </div>
+          <div>Pedidos: {_pedido} </div>
           <div className="uk-text-center">
           </div>
         </div>
@@ -33,4 +31,4 @@ const TarjetadeMaquina = ({
   );
 };
 
-export default TarjetadeMaquina;
+export default TarjetaCliente;

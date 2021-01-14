@@ -23,3 +23,4 @@ export const ingresarPedido = (params) => {
 export const actualizarPedido = (params) => {
   return _axios.patch(`/pedido/${params.id}`, params.pedido);
 };
+

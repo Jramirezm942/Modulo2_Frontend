@@ -1,13 +1,6 @@
 import {_axios} from "./api";
 
 
-export const listaMaquinas = () => {
-
-  return _axios.get(`/listamaquinas`);
-
-};
-
-
 export const infoMaquina = (id) => {
 
   return _axios.get(`/maquina/${id}`);
