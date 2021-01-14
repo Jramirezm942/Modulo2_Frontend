@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {registrarCliente} from "../../services/clienteWs";
+import {registrarCliente, actualizarCliente} from "../../services/clienteWs";
 import {infoCliente} from "../../services/clienteWs";
 
 export default class clienteRegist extends Component {
@@ -13,6 +13,7 @@ export default class clienteRegist extends Component {
                     //si viene un id en los paramas realizamos un peticion al backend
                     if(id){
                     infoCliente(id).then(res =>{
+                        console.log('info cliente', res)
                         const {result} = res.data
                         this.setState({data: result})
                     })
@@ -31,17 +32,19 @@ export default class clienteRegist extends Component {
                       //esta funcion envia los datos a la base de datos
                       onSubmit = (event) => {
                         event.preventDefault()
-                        console.log("voy  enviar datos")
-                        registrarCliente(this.state.data).then((response)=>{
-                              this.setState({data:{}})
-                              console.log("felicidades",response)
-                              this.props.history.push("/listaclientes")
+                       console.log("voy  enviar datos")
+                       const {cliente} = this.state
+                       const {id} = this.props.match.params;
+                        const action = id ? actualizarCliente : registrarCliente //<---- son ws(webservices) chequen si se importaron
+                        const params = id ? {cliente, id} : { cliente } // creamos los parametros depeiendo de la accion 
+                        action(params).then((response)=>{
+                         this.setState({cliente:{}})
+                         console.log("felicidades",response)
+                         this.props.history.push("/listacolaboradores")
                         }).catch((error)=>{
-                                console.log("hay un error",error.response)
-                        })
-                      }
-            
-            
+                          console.log("hay un error",error.response)
+                })
+              }
 
 
 render() {
