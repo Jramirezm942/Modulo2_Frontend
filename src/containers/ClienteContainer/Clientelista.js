@@ -3,6 +3,7 @@ import { TarjetaCliente } from "../../components";
 import { todosclientes } from "../../services/admin";
 import {infoCliente} from "../../services/clienteWs";
 import AppContext from "../../AppContext";
+import { Navbar } from "../../components";
 
 
 export default class ListaClientesContainer extends Component {
@@ -43,11 +44,17 @@ componentWillMount(){
     }
 }
 render(){
-    const {cliente, listCli} = this.state
+    const {cliente, listCli} = this.state;
+    let sectionStyle = {
+        width: "100%",
+        backgroundImage: 'url("https://i.picsum.photos/id/192/2352/2352.jpg?hmac=jN5UExysObV7_BrOYLdxoDKzm_c_lRM6QkaInKT_1Go")'
+      };
     return(
+        <div style={sectionStyle}>
+        <Navbar/>
         <section className="uk-section">
-            <div className="uk-container">
-                <h3>Lista de Clientes</h3>
+            <div className="uk-container" style={{marginRight:"-25%" }}>
+                <h2 style={{color:'white'}}>Lista de Clientes</h2>
                 <div className="uk-grid uk-child-width-1-2">
                     <div>
                     {listCli.map((item,i)=>
@@ -56,6 +63,7 @@ render(){
                 </div> 
             </div>
         </section>
+        </div>
     )
 }
 }

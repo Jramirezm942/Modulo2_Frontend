@@ -6,6 +6,7 @@ import { todoscolaboradores } from "../../services/admin";
 import { registrarMaquina, infoMaquina, actualizarMaquina } from "../../services/maquinaWs";
 import { buildNotification } from "../../utils/notification";
 import Form from './Form'
+import { Navbar } from "../../components";
 
 //esta visa nos servira para crear y para ver detalle de las propiedads
 
@@ -88,11 +89,17 @@ export default class MaquinariaContainer extends Component {
         })
     }
     render(){
-        const {maquina,listCol} = this.state
+        const {maquina,listCol} = this.state;
+        let sectionStyle = {
+            width: "100%",
+            backgroundImage: 'url("https://i.picsum.photos/id/389/4562/3042.jpg?hmac=vnZGl2BO_TMZ7PmMnfvGQ69vNYy4auG7odEZWpc6cOA")'
+          };
         return(
+            <div style={sectionStyle}>
+            <Navbar/>
             <section className="uk-section">
                 <div className="uk-container">
-                    <h3>Máquina</h3>
+                    <h2 style={{color:'white'}}>Máquina</h2>
                     <div className="uk-grid uk-child-width-1-2">
                         <Form 
                             maquina = {maquina}
@@ -106,6 +113,7 @@ export default class MaquinariaContainer extends Component {
                     </div> 
                 </div>
             </section>
+            </div>
         )
     }
 }

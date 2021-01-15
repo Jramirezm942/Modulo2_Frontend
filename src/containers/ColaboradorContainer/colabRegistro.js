@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { todasmaquinas } from '../../services/admin';
 import {registro, infoColaborador, actualizarColaborador} from "../../services/colabingWs";
 import AppContext from '../../AppContext';
- 
+import { Navbar } from "../../components";
+
 
 
 export default class colabRegistro extends Component {
@@ -65,18 +66,22 @@ static contextType = AppContext;
     
     
     render() {
+        let sectionStyle = {
+                width: "100%",
+                backgroundImage: 'url("https://i.picsum.photos/id/1078/3000/2000.jpg?hmac=kI-4ittyvRAG5-z9urHPPBQ4kDNJ4ItiEw6-NagOy10")'
+              };
          // aqui podemos declarar const var & let 
          console.log("la data",this.state.colaborador);
          const {handleChange, onSubmit} = this;
          const {colaborador, listMaq, isEditable} = this.state;
          console.log(isEditable)
         return (
-            <div>
-   
+            <div style={sectionStyle}>
+            <Navbar/>
                 <div>
-                        <div className="uk-child-width-expand@s uk-text-center">
+                        <div  className="uk-child-width-expand@s uk-text-center">
                                 <h1 className="uk-heading-medium">
-                                    <div className="uk-card uk-card-default uk-card-body">COLABORADOR
+                                    <div className="uk-card uk-card-default uk-card-body" style={{backgroundColor:'transparent', color:'white'}}>COLABORADOR
 
                         </div>
                                 </h1>
@@ -246,7 +251,7 @@ static contextType = AppContext;
                                             <div className="uk-child-width-expand@s uk-text-center">
                                                 <p>
     
-                                                <button className="uk-button uk-button-primary uk-button-large">Guardar</button>
+                                                <button className="uk-button uk-button-primary uk-button-large" style={{marginBottom:'2%'}}>Guardar</button>
     
                                                 </p>
                                         </div>

@@ -3,7 +3,7 @@ import { TarjetaPlista } from "../../components";
 import { todospedidos } from "../../services/admin";
 import {infoPedido} from "../../services/pedidoWs";
 import AppContext from "../../AppContext";
-
+import { Navbar } from "../../components";
 
 export default class ListaPedidosContainer extends Component {
     //Se inicialza context
@@ -44,11 +44,16 @@ componentWillMount(){
 }
 render(){
     const {pedido, listPed} = this.state;
-    console.log(listPed);
+    let sectionStyle = {
+        width: "100%",
+        backgroundImage: 'url("https://i.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I")'
+      };
     return(
+        <div style={sectionStyle}>
+        <Navbar/>
         <section className="uk-section">
-            <div className="uk-container">
-                <h3>Lista de Pedidos</h3>
+            <div className="uk-container" style={{marginRight:"-25%" }}>
+                <h2 style={{color:'black'}}>Lista de Pedidos</h2>
                 <div className="uk-grid uk-child-width-1-2">
                     <div>
                         {listPed.map((item,i)=>
@@ -57,6 +62,7 @@ render(){
                 </div> 
             </div>
         </section>
+        </div>
     )
 }
 }
