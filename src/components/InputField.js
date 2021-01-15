@@ -9,7 +9,7 @@ const InputField = ({
   ...props
 }) => (
   <div className="uk-margin">
-    <label className="uk-form-label uk-text-capitalize" htmlFor={name}>
+    <label className="uk-form-label uk-text-capitalize" style={{color:'white'}} htmlFor={name}>
       {name}:
     </label>
     <div className="uk-form-controls">

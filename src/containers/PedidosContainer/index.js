@@ -122,6 +122,8 @@ class PedidoForm extends Component {
             />
             <div className="uk-margin">
               <div className="uk-form-controls">
+              <label className="uk-form-label uk-text-capitalize" style={{color:'white'}} htmlFor='Cliente'>
+            Cliente</label>
              <select name='_cliente'value={pedido['_cliente']? pedido['_cliente']:''} onChange={this.handleChange} className="uk-select">
                 <option value={0}>Selecciona al Cliente</option>
                 {listCli.map((item,i)=> <option value={item._id} key={item._id}>{item.nombre}</option>)}
@@ -130,6 +132,8 @@ class PedidoForm extends Component {
             </div>
             <div className="uk-margin">
             <div className="uk-form-controls">
+            <label className="uk-form-label uk-text-capitalize" style={{color:'white'}} htmlFor='Colaborador'>
+            Colaborador</label>
             <select name='_colaborador'value={pedido['_colaborador'] ? pedido['_colaborador']:''} onChange={this.handleChange} className="uk-select">
               <option value={0}>Selecciona al Colaborador</option>
               {listCol.map((item,i)=> <option value={item._id} key={item._id}>{item.nombre}</option>)}
@@ -152,6 +156,8 @@ class PedidoForm extends Component {
               />
             <div className="uk-margin">
             <div className="uk-form-controls">
+            <label className="uk-form-label uk-text-capitalize" style={{color:'white'}} htmlFor='Estatus'>
+            Estatus</label>
               <select name="estatus" value={pedido['estatus']? pedido['estatus']:'En espera'} onChange={this.handleChange} className="uk-select">
                 <option value='En espera'>En espera</option>
                 <option value='En proceso'>En proceso</option>

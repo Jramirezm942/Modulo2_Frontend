@@ -37,7 +37,7 @@ const Form = ({ handleSubmit, handleChange, maquina,listCol}) => {
 
           />
         <div className="uk-margin">
-         <label className="uk-form-label uk-text-capitalize">
+         <label className="uk-form-label uk-text-capitalize" style={{color:'white'}}>
            Estado</label>
            <div className="uk-form-controls">
             <select name='estado'value={maquina['estado'] ? maquina['estado']:'Activa'} onChange={handleChange} className="uk-select"> 
@@ -48,7 +48,7 @@ const Form = ({ handleSubmit, handleChange, maquina,listCol}) => {
             </div>
             </div>
             <div className="uk-margin">
-            <label className="uk-form-label uk-text-capitalize">
+            <label className="uk-form-label uk-text-capitalize" style={{color:'white'}}>
              Colaborador</label>
             <select name='_colaborador'value={maquina['_colaborador'] ? maquina['_colaborador']:''} onChange={handleChange} className="uk-select">
                 <option value={0}>Selecciona al Colaborador</option>
