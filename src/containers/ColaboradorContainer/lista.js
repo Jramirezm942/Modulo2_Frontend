@@ -3,6 +3,7 @@ import { TarjetaColaborador } from "../../components";
 import { todoscolaboradores } from "../../services/admin";
 import {infoColaborador} from "../../services/colabingWs";
 import AppContext from "../../AppContext";
+import { Navbar } from "../../components";
 
 
 export default class ListaColaboradorsContainer extends Component {
@@ -43,19 +44,27 @@ componentWillMount(){
     }
 }
 render(){
-    const {colaborador, listCol} = this.state
+    const {colaborador, listCol} = this.state;
+    let sectionStyle = {
+        width: "100%",
+        backgroundImage: 'url("https://i.picsum.photos/id/1078/3000/2000.jpg?hmac=kI-4ittyvRAG5-z9urHPPBQ4kDNJ4ItiEw6-NagOy10")'
+      };
+
     return(
-        <section className="uk-section">
-            <div className="uk-container">
-                <h3>Lista de Colaboradores</h3>
+        <div style={sectionStyle}>
+        <Navbar/>
+        <section className="uk-section" >
+            <div className="uk-container" style={{marginRight:"-25%" }} >
+                <h2 style={{color:'white'}}>Lista de Colaboradores</h2>
                 <div className="uk-grid uk-child-width-1-2">
-                    <div>
+                    <div >
                     {listCol.map((item,i)=>
                          <TarjetaColaborador key={i}{...item} isDemo={true} />)}
                     </div>
                 </div> 
             </div>
         </section>
+        </div>
     )
 }
 }

@@ -16,7 +16,7 @@ const TarjetaPlista = ({
 }) => {
   return (
     <div className="uk-margin-small-bottom">
-      <div className="uk-card uk-card-default">
+      <div className="uk-card uk-card-default" style={{opacity: '0.8'}}>
         <div className="uk-card-body uk-padding-small">
           <h3 className="uk-card-title uk-text-center">
             <Link

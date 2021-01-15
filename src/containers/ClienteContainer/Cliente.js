@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {registrarCliente, actualizarCliente} from "../../services/clienteWs";
 import {infoCliente} from "../../services/clienteWs";
+import { Navbar } from "../../components";
 
 export default class clienteRegist extends Component {
         state = {
@@ -52,15 +53,20 @@ render() {
         console.log("la data",this.state.data);
         const {handleChange, onSubmit} = this;
         const {data} = this.state;
+        let sectionStyle = {
+                width: "100%",
+                height: "900px",
+                backgroundImage: 'url("https://i.picsum.photos/id/192/2352/2352.jpg?hmac=jN5UExysObV7_BrOYLdxoDKzm_c_lRM6QkaInKT_1Go")'
+              };
     return (
-        <div>
-                
+        <div style={sectionStyle}>
+                <Navbar/>
 
 
                 <div>
                         <div className="uk-child-width-expand@s uk-text-center">
                                 <h1 classNameName="uk-heading-medium">
-                                    <div classNameName="uk-card uk-card-default uk-card-body">Registrar un nuevo Cliente
+                                    <div classNameName="uk-card uk-card-default uk-card-body" style={{color:'white'}}>Cliente
 
                         </div>
                                 </h1>

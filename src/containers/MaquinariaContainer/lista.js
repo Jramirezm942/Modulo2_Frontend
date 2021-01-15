@@ -3,7 +3,7 @@ import { TarjetaMlista } from "../../components";
 import { todasmaquinas } from "../../services/admin";
 import {infoMaquina} from "../../services/maquinaWs";
 import AppContext from "../../AppContext";
-
+import { Navbar } from "../../components";
 
 export default class ListaMaquinasContainer extends Component {
     //Se inicialza context
@@ -43,11 +43,17 @@ componentWillMount(){
     }
 }
 render(){
-    const {maquina, listMaq} = this.state
+    const {maquina, listMaq} = this.state;
+    let sectionStyle = {
+        width: "100%",
+        backgroundImage: 'url("https://i.picsum.photos/id/389/4562/3042.jpg?hmac=vnZGl2BO_TMZ7PmMnfvGQ69vNYy4auG7odEZWpc6cOA")'
+      };
     return(
+        <div style={sectionStyle}>
+        <Navbar/>
         <section className="uk-section">
-            <div className="uk-container">
-                <h3>Lista de Máquinas</h3>
+            <div className="uk-container" style={{marginRight:"-25%" }}>
+                <h2 style={{color:'white'}}>Lista de Máquinas</h2>
                 <div className="uk-grid uk-child-width-1-2">
                     <div>
                     {listMaq.map((item,i)=>
@@ -56,6 +62,7 @@ render(){
                 </div> 
             </div>
         </section>
+        </div>
     )
 }
 }

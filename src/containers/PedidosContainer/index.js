@@ -5,9 +5,11 @@ import { todoscolaboradores, todosclientes } from "../../services/admin";
 import { buildNotification } from "../../utils/notification";
 import AppContext from "../../AppContext";
 import  {TarjetaPedido}  from "../../components";
+import { Navbar } from "../../components";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
 dayjs.extend(LocalizedFormat);
+
 
 class PedidoForm extends Component {
   static contextType = AppContext;
@@ -98,10 +100,16 @@ class PedidoForm extends Component {
 
   render() {
     const { pedido,listCol, listCli } = this.state;
+    let sectionStyle = {
+      width: "100%",
+      backgroundImage: 'url("https://i.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I")'
+    };
     return (
+      <div style={sectionStyle}>
+        <Navbar/>
       <section className="uk-section">
         <div className="uk-container">
-          <h2 className="">Pedido</h2>
+          <h3 style={{color:'white'}}>Pedido</h3>
           <div className="uk-grid uk-child-width-1-2">
           <form onSubmit={this.handleSubmit}>
             <InputField
@@ -162,6 +170,7 @@ class PedidoForm extends Component {
       </div>
       </div>
   </section>
+  </div>
     );
   }
 }
