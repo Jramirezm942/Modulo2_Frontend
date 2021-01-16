@@ -3,13 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
+import UIkit from 'uikit';
+import Icons from "uikit/dist/js/uikit-icons";
+import "uikit/dist/css/uikit.min.css"
+// usamos UIkit
+UIkit.use(Icons)
 
-ReactDOM.render(
-  <React.StrictMode>
+
+const WithRouter = () => (
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </BrowserRouter>
 );
+
+ReactDOM.render(<WithRouter />, 
+document.getElementById("root"));
+
+
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
