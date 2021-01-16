@@ -50,7 +50,7 @@ const Navbar = ({ salir }) => {
                                     </div>
                             </li>
                             <li>
-                                <a href="//">DashBoard</a>
+                                <a href="/dashboard">DashBoard</a>
                             </li>
                             <li> 
                                 <a onClick={salir} href="/">Salir</a>

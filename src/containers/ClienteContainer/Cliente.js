@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import {registrarCliente, actualizarCliente} from "../../services/clienteWs";
 import {infoCliente} from "../../services/clienteWs";
 import { Navbar } from "../../components";
+import AppContext from '../../AppContext';
 
 export default class clienteRegist extends Component {
+static contextType = AppContext;
         state = {
-                data:{}   
+                cliente:{},  
           } 
         componentWillMount(){
                 const {history} = this.props
@@ -16,23 +18,19 @@ export default class clienteRegist extends Component {
                     infoCliente(id).then(res =>{
                         console.log('info cliente', res)
                         const {result} = res.data
-                        this.setState({data: result})
+                        this.setState({cliente: result})
                     })
                 }
             }  
                       //esta funcion es para escuchar lo que el usuaio teclea en el componente Login
                       handleChange = (event)=>{
-                                      // {key:value}  
-                              const { value, name} = event.target;
-                                      let { data } = this.state
-              
-                                      data[name] = value
-        
-                                      this.setState({ data })
+                        let {cliente} = this.state;
+                         cliente = {...cliente, [event.target.name]:event.target.value};
+                         this.setState({cliente})
                       }
                       //esta funcion envia los datos a la base de datos
                       onSubmit = (event) => {
-                        event.preventDefault()
+                      event.preventDefault()
                        console.log("voy  enviar datos")
                        const {cliente} = this.state
                        const {id} = this.props.match.params;
@@ -41,8 +39,10 @@ export default class clienteRegist extends Component {
                         action(params).then((response)=>{
                          this.setState({cliente:{}})
                          console.log("felicidades",response)
-                         this.props.history.push("/listacolaboradores")
-                        }).catch((error)=>{
+                         this.props.history.push("/listaclientes")
+
+
+                }).catch((error)=>{
                           console.log("hay un error",error.response)
                 })
               }
@@ -50,9 +50,9 @@ export default class clienteRegist extends Component {
 
 render() {
         // aqui podemos declarar const var & let 
-        console.log("la data",this.state.data);
+        console.log("la data",this.state.cliente);
         const {handleChange, onSubmit} = this;
-        const {data} = this.state;
+        const {cliente} = this.state;
         let sectionStyle = {
                 width: "100%",
                 height: "900px",
@@ -91,7 +91,7 @@ render() {
                                                         onChange={handleChange}
                                                         required
                                                         placeholder="nombre"      
-                                                        value = {data["nombre"] ? data["nombre"]:""}
+                                                        value = {cliente["nombre"] ? cliente["nombre"]:""}
                                                         />
 
                                     </div>
@@ -101,14 +101,14 @@ render() {
                                              {/*////////////////////////////// segundo input input /////////////////////////////////////////*/}
                                             <div className="uk-margin">
                                             <div className="uk-inline">  
-                                                <span className="uk-form-icon" uk-icon="icon: mail" ></span>
+                                                <span className="uk-form-icon" uk-icon="icon: date" ></span>
                                                         <input className="uk-input"    
                                                         type="Number" 
                                                         name="año_de_ingreso" 
                                                         onChange={handleChange}
                                                         required
                                                         placeholder="Año de Ingreso"      
-                                                        value = {data["año_de_ingreso"] ? data["año_de_ingreso"]:""}
+                                                        value = {cliente["año_de_ingreso"] ? cliente["año_de_ingreso"]:""}
                                                         />
 
                                     </div>

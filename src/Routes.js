@@ -10,6 +10,7 @@ import ListaPedidos from './containers/PedidosContainer/lista';
 import ListaClientes from "./containers/ClienteContainer/Clientelista";
 import ListaColaboradores from './containers/ColaboradorContainer/lista';
 import ListaMaquinas from './containers/MaquinariaContainer/lista';
+import Dashboard from './containers/Dashboard';
 
 const Routes = () => (
   <Switch>
@@ -27,6 +28,7 @@ const Routes = () => (
     <Route exact path="/cliente/:id" component={Cliente} />
     <Route exact path="/colaborador/:id" component={colabRegistro} />
     <Route exact path="/maquina/:id" component={Maquinaria} />
+    <Route exact path="/dashboard" component={Dashboard} />
   </Switch>
 );
 export default Routes;
